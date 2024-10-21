@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const app = express();
-const PORT = 3002;
+const PORT = 3003;
 
 // Set up storage configuration for Multer
 const storage = multer.diskStorage({
