@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Upload</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      h1 {
+        text-align: center;
+        color: #444;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      input[type="file"] {
+        margin-bottom: 15px;
+      }
+      button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #28a745;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      h2 {
+        text-align: center;
+        color: #444;
+      }
+      #image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+      #image-gallery img {
+        border-radius: 8px;
+        transition: transform 0.2s;
+        width: 200px;
+        height: auto; /* Maintain aspect ratio */
+      }
+      #image-gallery img:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upload Images</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <label for="image-input">Choose images:</label>
+      <input
+        type="file"
+        id="image-input"
+        name="images"
+        accept="image/*"
+        multiple
+        required
+      />
+      <button type="submit">Upload</button>
+    </form>
+
+    <h2>Uploaded Images</h2>
+    <div id="image-gallery">
+      <% images.forEach(function(image) { %>
+      <img src="<%= image.path %>" alt="<%= image.filename %>" />
+      <% }); %>
+    </div>
+  </body>
+</html>
